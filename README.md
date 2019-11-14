@@ -1,4 +1,4 @@
-## groupuserテーブル
+## group_usersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -31,7 +31,7 @@
 - belongs_to :users
 - belongs_to :groups
 
-## messageテーブル
+## messagesテーブル
 
 |Column|Type|Options|
 |------|----|-------|
