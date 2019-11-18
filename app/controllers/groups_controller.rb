@@ -1,7 +1,9 @@
 class GroupsController < ApplicationController
+
   def  index
   end
     
+
   def new
     @group = Group.new
     @group.users << current_user
@@ -31,4 +33,5 @@ class GroupsController < ApplicationController
   def set_group
     @group = Group.find(params[:id])
   end
+=======
 end
