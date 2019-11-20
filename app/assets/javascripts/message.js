@@ -1,4 +1,5 @@
 $(function(){ 
+  
   function buildHTML(message){
    var image = message.image? `<img src=${message.image} ></img>`:"";
      var html =
@@ -29,14 +30,17 @@ $(function(){
       dataType: 'json',
       processData: false,
       contentType: false
-      }).done(function(data){
-        var html = buildHTML(data);
-        $('.messages').append(html);
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
-        $('form')[0].reset();
-      }).fail(function(){
-        alert('error');
-      });
-      return false;
-  });
+    })
+
+        .done(function(data){
+                var html = buildHTML(data);
+              $('.main__messages').append(html);
+    ScrollToNewMessage();
+              $('.main__footer__text').val('');
+              $(".main__footer__send-button").prop('disabled', false);
+        })
+        .fail(function(){
+          alert('error');
+        });
+    });
 });
