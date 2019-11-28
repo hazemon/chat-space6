@@ -19,7 +19,7 @@ $(function(){
         </div>`
   $('.messages').append(html);
   }
-  $('#new_message').on('submit', function(e){
+  $('.new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -36,19 +36,20 @@ $(function(){
         $('.messages').append(html);
         $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
         $('form')[0].reset();
-      }).fail(function(){
+      })
+      .fail(function(){
         alert('error');
       });
       return false;
   });
   var reloadMessages = function () {
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
-      var last_message_id = $('.message:last').data("message-id");
+      last_message_id = $('.message:last').data("message-id");
       $.ajax({
         url: "api/messages",
         type: 'get',
         dataType: 'json',
-        data: {last_id: last_message_id}
+        data: {id: last_message_id}
       })
       .done(function (messages) {
         var insertHTML = '';
